@@ -210,7 +210,7 @@
 
 - (NSURLSessionDataTask *)DELETE:(NSString *)URLString
                       parameters:(id)parameters
-                         success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                         success:(void (^)(NSURLSessionDataTask *task, id __nullable responseObject))success
                          failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
 {
     NSURLSessionDataTask *dataTask = [self dataTaskWithHTTPMethod:@"DELETE" URLString:URLString parameters:parameters success:success failure:failure];
@@ -223,7 +223,7 @@
 - (NSURLSessionDataTask *)dataTaskWithHTTPMethod:(NSString *)method
                                        URLString:(NSString *)URLString
                                       parameters:(id)parameters
-                                         success:(void (^)(NSURLSessionDataTask *, id))success
+                                         success:(void (^)(NSURLSessionDataTask *, id __nullable))success
                                          failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
     NSError *serializationError = nil;
@@ -242,7 +242,7 @@
     }
 
     __block NSURLSessionDataTask *dataTask = nil;
-    dataTask = [self dataTaskWithRequest:request completionHandler:^(NSURLResponse * __unused response, id responseObject, NSError *error) {
+    dataTask = [self dataTaskWithRequest:request completionHandler:^(NSURLResponse * __unused response, id __nullable responseObject, NSError *error) {
         if (error) {
             if (failure) {
                 failure(dataTask, error);
