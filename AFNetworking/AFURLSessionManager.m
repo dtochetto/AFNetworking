@@ -676,7 +676,7 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 #pragma mark -
 
 - (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request
-                            completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler
+                            completionHandler:(void (^)(NSURLResponse *response, id __nullable responseObject, NSError *error))completionHandler
 {
     __block NSURLSessionDataTask *dataTask = nil;
     dispatch_sync(url_session_manager_creation_queue(), ^{
